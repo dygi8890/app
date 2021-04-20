@@ -1,0 +1,32 @@
+<style type="text/css">
+body{
+	font-size: 16pt;
+	color: black;
+	background-color: white;
+}
+h1{
+	font-size: 24pt;
+	color: black;
+}
+p{
+	margin-left: 20%;
+	margin-right: 10%
+}
+.my-container{
+	align-content: auto;
+}
+.my-row{
+	align-items: auto;
+	
+}
+.my-button{
+	width: 150px;
+	height: 50px;
+}
+
+.card1{
+	height:auto;
+	align-self: stretch;
+}
+
+</style>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>Select an image to show...</p>
+    <form action = "http://localhost:5000/result" method = "POST">
+        <p><input type="submit" name="submit_button" value="Hedgehog"></p>
+    </form>
+    <form action = "http://localhost:5000/result" method = "POST">
+        <p><input type="submit" name="submit_button" value="Cloud"></p>
+    </form>
+
+<p>Give it a sec to load! Large images (cloud.jpg, as it stands) take longer to process.</p>
+<audio controls>
+    <source src="{{ url_for('static', filename='NGGYU.mp3') }}" type="audio/mpeg">
+</audio>
+
+</body>
+</html>

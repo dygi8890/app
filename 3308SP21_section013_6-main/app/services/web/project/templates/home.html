@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>PhotoPhonic</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/ppLogo1.png">
+
+    <script>
+        $(document).ready(function(){
+
+            $("#loading").hide();
+
+            $("#uploadButton").click(function(){
+                $("#loading").show();
+            });
+        });
+    </script>
+
+</head>
+
+
+<body style=" width:100%; height:100%;
+    background-image: url( {{ url_for('static', filename='uuids/' + uuid + '.jpg') }} );
+    /*background-size: auto;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 115%;
+">
+
+    {% include "partials/header.html" %}
+
+    <div id="loading">
+        <div class="spin-container" style="margin-top: 15%;">
+          <div class="spin" id="loader"></div>
+          <span id="loadingText">LOADING...</span>
+        </div>
+    </div>
+
+    {% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% block page_content %}{% endblock %}
+    </div>
+    {% endblock %}
+
+  	<div class="container mb-3">
+
+        <div class="row" style="margin-top: 5vw;">
+
+            <div class="col">
+                <div class="card slickCard text-center p-5 mt-4 mb-4 h-100 d-inline-block w-100" style="opacity: 0.9; display: flex;">
+                    <h5 class="card-title">Try it yourself!</h5>
+<!--                        <img class="card-img" src="{{url_for('static', filename='cloud.jpg')}}">-->
+                    <form id="uploadForm" action="http://localhost:5000/upload" method = "POST" enctype = "multipart/form-data" class="mt-3"
+                          style="position: absolute; top: 50%; transform: translateY(-50%); margin-right: 3vw;">
+<!--                            <button href="{{ url_for('home', uuid=uuid) }}" class="btn btn-dark blockyButton" />Upload</button>-->
+<!--                            <button href="#" name="button" class="btn btn-dark blockyButton" value="stock">Pick a Random Image</button>-->
+                        <input type="file" name = "file" class="btn btn-dark blockyButton" style="width:70%;"/>
+                        <input id="uploadButton" type="submit" class="btn btn-dark blockyButton"/>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card slickCard text-center p-5 mt-4 mb-4 h-100 d-inline-block w-100" style="opacity: 0.9;">
+                    <h5 class="card-title">Your Audio:</h5>
+                    <br/>
+                    <h4 style="margin-top: 0.5%">{{ uuid }}</h4>
+                    <audio controls>
+                        <source src="{{ url_for('static', filename='uuids/' + uuid + '.wav') }}" type="audio/mpeg">
+                    </audio>
+<!--                <button href="#" class="btn btn-dark blockyButton">Play</button>-->
+<!--                <button href="#" class="btn btn-dark blockyButton">Pause</button>-->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="card slickCard text-center mb-4" style="opacity: 0.9; margin-top: 4.5vw; width: 32vw;">
+                <div class="card-body">
+                    <h4>Share your creation</h4>
+                    <button onclick="window.location.href='https://www.facebook.com';" href="#" class="btn btn-default special-button"> <img src="https://media4.s-nbcnews.com/j/streams/2013/December/131203/2D9839980-facebooklogo.social_share_1024x768_scale.jpg" width="50" height="50"></button>
+                    <button onclick="window.location.href='https://www.twitter.com';" href="#" class="btn btn-default special-button"> <img src="https://cdn1.iconfinder.com/data/icons/windev-contacts-2/512/twitter_button-512.png" width="50" height="50"></button>
+                    <button href="#" class="btn btn-default special-button"> <img src="https://static.thenounproject.com/png/920540-200.png" width="60" height="60"></button>
+                </div>
+
+                {% include "partials/footer.html" %}
+
+            </div>
+        </div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>

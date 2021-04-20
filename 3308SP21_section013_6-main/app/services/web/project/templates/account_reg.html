@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+	<link rel="icon" href="../static/ppLogo1.png">
+</head>
+
+<body>
+
+    {% include "partials/header.html" %}
+
+    <br> <br> <br>
+    <div class="center text-center mb-3">
+		<form class="form-signin" style="margin-left: 30vw; margin-right: 30vw;" method="post">
+			<h1 class="h3 mb-3 font-weight-normal">Create a PhotoPhonic Account</h1>
+			<br>
+			<label for="newUsername" class="sr-only">Username</label>
+			<input id="newUsername" class="form-control mt-3 mr-3" placeholder="Username" name="newUsername" value="{{request.form.newUsername}}" required autofocus>
+            <label for="newPassword" class="sr-only">Password</label>
+			<input id="newEmail" class="form-control mt-3 mr-3" placeholder="Email Address" name="newEmail" value="{{request.form.newEmail}}" required>
+			<label for="newEmail" class="sr-only">Email Address</label>
+			<input type="password" id="newPassword" class="form-control mt-3 mr-3" placeholder="Password" name="newPassword" value="{{request.form.newPassword}}" required>
+			<br>
+			<button class="btn btn-lg btn-primary" type="submit">Create!</button>
+			<br> <br>
+			{% if error %}
+        		<p class="error" style="color:red"><strong>Error:</strong> {{ error }}
+    		{% endif %}
+    						<hr>
+		</form>
+
+    {% include "partials/footer.html" %}
+
+</body>
+
+</html>
+    

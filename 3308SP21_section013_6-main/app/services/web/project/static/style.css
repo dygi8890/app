@@ -1,0 +1,90 @@
+body{
+	font-size: 16pt;
+	color: black;
+	background-color: white;
+	height: 100%;
+	width: 100%;
+}
+h1{
+	font-size: 24pt;
+	color: black;
+}
+h5{
+	font-size: 24pt;
+	color: black;
+	font-weight: bold;
+
+}
+.my-container{
+	align-content: auto;
+}
+.my-row{
+	align-items: auto;
+}
+.my-button{
+	width: 150px;
+	height: 50px;
+}
+.slickCard {
+	height: auto;
+	align-self: stretch;
+	opacity: 0.33;
+}
+.centerVert{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/*  Loader Style  */
+
+#loadingText {
+	/*color: #D6E3F6;*/
+	/*font-family: Arial;*/
+	font-size: 20px;
+	position: relative;
+	top: -124px;
+}
+.spin-container {
+
+	text-align: center;
+	margin-top: 100px;
+}
+.spin {
+	border: 30px solid #2d7d0e;
+	width: 220px;
+	height: 220px;
+	margin: 0 auto;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: rotate 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
+}
+@keyframes rotate {
+	0% {
+	  transform: rotateZ(-360deg)
+	}
+	100% {
+	  transform: rotateZ(0deg)
+	}
+}
+@keyframes rotate2 {
+	0% {
+	  transform: rotateZ(360deg)
+	}
+	100% {
+	  transform: rotateZ(0deg)
+	}
+}
+
+#loading {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	opacity: 0.7;
+	background-color: #fff;
+	z-index: 99;
+	text-align: center;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+
+
+<p> {{ result }} </p>
+<form action = "http://localhost:5000/test">
+    <p><input type = "submit" value = "Back to Test Page" /></p>
+</form>
+
+
+<div class="card">
+    <img src="{{ url_for('static', filename=image) }}" style="width: 600px;">
+</div>
+<div class="card">
+    <img src="{{ url_for('static', filename=markedImage) }}" style="width: 600px;">
+    <p>{{ markedImage }}</p>>
+</div>
+
+<p>
+    This image was first grabbed using a Flask POST.
+    <br/>
+    OpenCV was given the filepath, ran a quick analysis, then wrote an image file into .../project/static/.
+    <br/>
+    That drawn-on image was then displayed using that same POST command from __init__.py
+    <br/>
+    Each circle represents that color channel's center of color mass in the image.
+    <br/>
+    It says this image's dimensions are: {{ dimensions }}
+</p>
